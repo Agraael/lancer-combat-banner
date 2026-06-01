@@ -21,10 +21,16 @@ function LancerCombatBanner() {
       bannerContainer = document.getElementById("yourTurnContainer");
       if (bannerContainer == null) {
         let bannerContainerDiv = document.createElement("div");
-        let uiTOP = document.getElementById("ui-top");
         bannerContainerDiv.id = "yourTurnContainer";
-        uiTOP.appendChild(bannerContainerDiv);
-        bannerContainer = document.getElementById("yourTurnContainer");
+        bannerContainerDiv.style.position = "fixed";
+        bannerContainerDiv.style.top = "0";
+        bannerContainerDiv.style.left = "0";
+        bannerContainerDiv.style.width = "100%";
+        bannerContainerDiv.style.pointerEvents = "none";
+        bannerContainerDiv.style.zIndex = "100";
+        const parent = document.getElementById("interface") || document.body;
+        parent.appendChild(bannerContainerDiv);
+        bannerContainer = bannerContainerDiv;
       }
       buildSettings();
       
