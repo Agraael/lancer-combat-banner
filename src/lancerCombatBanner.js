@@ -108,9 +108,9 @@ function LancerCombatBanner() {
       ${game.i18n.localize('ADA_COMBATBANNER.Round')} #${combat.round}
     </div>
     <p id="yourTurnText" class="yourTurnText">${callsign}</p>
-    <div class="yourTurnSubheading">
+    ${mechClass ? `<div class="yourTurnSubheading">
       「${mechClass}」</span>
-    </div>
+    </div>` : ""}
     <div id="yourTurnBannerBackground" class="yourTurnBannerBackground" height="150"></div>`;
     
     bannerContainer.append(currentImgHTML)

@@ -35,7 +35,10 @@ export function newRoundChatMessage( roundNumber ){
 
 export function getMechClass(actor) {
   if (actor.type == "npc") {
-    let npcClass =  actor.items.find(e => {return e.type == "npc_class"})?.name || "npc";
+    let hideClass = false;
+    try { hideClass = !!game.settings.get("lancer-combat-banner", "hideNpcClass"); } catch (e) { /* ignore */ }
+    if (hideClass) return "";
+    let npcClass = actor.items.find(e => {return e.type == "npc_class"})?.name || "npc";
     let npcTemplates = actor.items.filter(e => {return e.type == "npc_template"})
       .map(e => {return e.name})
       .join(" ");
